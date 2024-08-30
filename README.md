@@ -20,7 +20,7 @@ Se ejecuta con docker, ya tiene el archivo docker-compose 😉
 
 Luego para probar la api, se puede usar swagger 😎 abriendo http://localhost:8080/swagger/index.html
 
-## consideraciones tecnicas
+## Consideraciones tecnicas
 
 Se utilizaron las siguientes librerias y conceptos
 
@@ -71,7 +71,6 @@ curl -X 'POST' \
 y para asignar las tareas
 
  ```bash
-curl -X 'POST' \
 curl -X 'POST' \
   'http://localhost:8080/Asignacion' \
   -H 'accept: text/plain' \
