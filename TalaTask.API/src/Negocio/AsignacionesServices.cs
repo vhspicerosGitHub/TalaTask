@@ -57,10 +57,8 @@ namespace TalaTask.API.src.Negocio
 
         public Empleado? AsignarTarea(Tarea tarea)
         {
-            // Metodo principal para buscar la mejor asignacion
-            // 1. buscar todos los empleados que tengan la mismas habilidades y tengan tiempo disponible antes del deadline.
             var empleados = _empleadoRepository.ObtieneEmpleadosConHabilidades(tarea.Habilidades);
-            empleados = empleados.FindAll(x => x.Disponibilidades.Any(y => y.Inicio <= tarea.FechaDeadLine.AddHours(-tarea.DuracionEstimada) && y.CantidadHoras >= tarea.DuracionEstimada));
+            empleados = empleados.FindAll(x => x.Disponibilidades.Any(y => y.Disponible && y.Inicio <= tarea.FechaDeadLine.AddHours(-tarea.DuracionEstimada) && y.CantidadHoras >= tarea.DuracionEstimada));
             empleados.Sort((x, y) => x.Disponibilidades[0].Inicio.CompareTo(y.Disponibilidades[0].Inicio));
 
             var empleado = empleados.FirstOrDefault();
