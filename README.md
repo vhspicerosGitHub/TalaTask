@@ -12,7 +12,7 @@ git clone https://github.com/vhspicerosGitHub/TalaTask.git
 
 Se ejecuta con docker, ya tiene el archivo docker-compose 😉
 
- ```json
+ ```bash
  cd .\TalaTask\
  docker-compose up
 
