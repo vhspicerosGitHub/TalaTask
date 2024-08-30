@@ -28,6 +28,14 @@ namespace TalaTask.API.Controllers
         }
 
 
+
+        /// <summary>
+        /// Asigna varias tareas a los empleados.
+        /// </summary>
+        /// <param name="tareaIds">La lista de ids de las tareas a asignar.</param>
+        /// <remarks>
+        /// Las tareas se asignarán a los empleados disponibles con las mismas habilidades
+        /// </remarks>
         [HttpPost]
         public List<AsignacionResponseDto> Post([FromBody] List<Int32> tareaIds)
         {
