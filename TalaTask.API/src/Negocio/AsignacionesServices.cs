@@ -26,7 +26,7 @@ namespace TalaTask.API.src.Negocio
             {
 
                 var comentario = string.Empty;
-                var empleado = BuscaMejorAsignacion(tarea);
+                var empleado = AsignarTarea(tarea);
 
                 if (empleado != null)
                     _empleadoRepository.Editar(empleado); // Se actualiza el estado del empleado.
@@ -55,14 +55,19 @@ namespace TalaTask.API.src.Negocio
             return CrearTareas(tareas);
         }
 
-        public Empleado? BuscaMejorAsignacion(Tarea tarea)
+        public Empleado? AsignarTarea(Tarea tarea)
         {
             // Metodo principal para buscar la mejor asignacion
             // 1. buscar todos los empleados que tengan la mismas habilidades y tengan tiempo disponible antes del deadline.
             var empleados = _empleadoRepository.ObtieneEmpleadosConHabilidades(tarea.Habilidades);
             empleados = empleados.FindAll(x => x.Disponibilidades.Any(y => y.Inicio <= tarea.FechaDeadLine.AddHours(-tarea.DuracionEstimada) && y.CantidadHoras >= tarea.DuracionEstimada));
             empleados.Sort((x, y) => x.Disponibilidades[0].Inicio.CompareTo(y.Disponibilidades[0].Inicio));
-            return empleados.FirstOrDefault();
+
+            var empleado = empleados.FirstOrDefault();
+            if (empleado != null)
+                return SplitDisponibilidad(empleado, tarea);
+
+            return null;
         }
 
         public Empleado SplitDisponibilidad(Empleado empleado, Tarea tarea)
@@ -77,6 +82,7 @@ namespace TalaTask.API.src.Negocio
             // Se hace un split y se deja una disponbilidad disponible con el tiempo restante
             var (usar, disponible) = disponibilidadParaRealizarTarea.Split(disponibilidadParaRealizarTarea.Inicio.AddHours(tarea.DuracionEstimada));
             usar.Disponible = false;
+            usar.TareaId = tarea.Id;
             disponible.Disponible = true;
             disponibilidades.AddRange(new List<Disponibilidad> { usar, disponible });
             disponibilidades.OrderBy(x => x.Inicio);

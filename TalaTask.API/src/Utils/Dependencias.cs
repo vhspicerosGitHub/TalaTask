@@ -16,6 +16,7 @@ namespace TalaTask.API.src.Utils
             services.AddTransient<EmpleadoServices>();
             services.AddTransient<TareaServices>();
             services.AddTransient<AsignacionesServices>();
+            services.AddTransient<ReportesServices>();
             return services;
         }
     }

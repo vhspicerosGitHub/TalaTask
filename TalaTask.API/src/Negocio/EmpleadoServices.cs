@@ -31,7 +31,7 @@ namespace TalaTask.API.src.Negocio
         public void Editar(Empleado empleado)
         {
             if (_empleadoRepository.GetById(empleado.Id) == null)
-                throw new AppException(404, "No existe un empleado con ese id");
+                throw new AppException(StatusCodes.Status404NotFound, "No existe un empleado con ese id");
 
             _empleadoRepository.Editar(empleado);
         }
@@ -39,7 +39,7 @@ namespace TalaTask.API.src.Negocio
         public void Eliminar(Empleado empleado)
         {
             if (_empleadoRepository.GetById(empleado.Id) == null)
-                throw new AppException(404, "No existe un empleado con ese id");
+                throw new AppException(StatusCodes.Status404NotFound, "No existe un empleado con ese id");
 
             _empleadoRepository.Editar(empleado);
         }

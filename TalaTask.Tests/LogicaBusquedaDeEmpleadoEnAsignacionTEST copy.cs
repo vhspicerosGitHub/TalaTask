@@ -41,7 +41,7 @@ namespace TalaTask.Tests
             var tarea = new Tarea { Id = 1, Titulo = "Tarea 1", Habilidades = new List<string> { "PHP" }, DuracionEstimada = 2, FechaDeadLine = DateTime.Now.AddHours(10) };
             _tareaRepository.Crear(tarea);
 
-            var empleadoMejorAsignacion = asignacionesServices.BuscaMejorAsignacion(tarea);
+            var empleadoMejorAsignacion = asignacionesServices.AsignarTarea(tarea);
             Assert.IsNull(empleadoMejorAsignacion);
         }
 
@@ -51,7 +51,7 @@ namespace TalaTask.Tests
             var tarea = new Tarea { Id = 1, Titulo = "Tarea 1", Habilidades = new List<string> { "PHP" }, DuracionEstimada = 2, FechaDeadLine = DateTime.Now.AddHours(10) };
             _tareaRepository.Crear(tarea);
 
-            var empleadoMejorAsignacion = asignacionesServices.BuscaMejorAsignacion(tarea);
+            var empleadoMejorAsignacion = asignacionesServices.AsignarTarea(tarea);
             Assert.IsNull(empleadoMejorAsignacion);
         }
 
@@ -74,7 +74,7 @@ namespace TalaTask.Tests
             var tarea = new Tarea { Id = 1, Titulo = "Tarea 1", Habilidades = new List<string> { "C#" }, DuracionEstimada = 2, FechaDeadLine = DateTime.Now.AddHours(10) };
             _tareaRepository.Crear(tarea);
 
-            var empleadoMejorAsignacion = asignacionesServices.BuscaMejorAsignacion(tarea);
+            var empleadoMejorAsignacion = asignacionesServices.AsignarTarea(tarea);
 
             Assert.NotNull(empleadoMejorAsignacion);
             Assert.AreEqual(1, empleadoMejorAsignacion.Id);

@@ -22,7 +22,7 @@ namespace TalaTask.API.Controllers
         /// La tarea se asignará a un empleado disponible con las mismas habilidades
         /// </remarks>
         [HttpPost("{tareaId}")]
-        public void Post(Int32 tareaId)
+        public void AsignarTarea(Int32 tareaId)
         {
             _asignacionesServices.Crear(tareaId);
         }
@@ -37,7 +37,7 @@ namespace TalaTask.API.Controllers
         /// Las tareas se asignarán a los empleados disponibles con las mismas habilidades
         /// </remarks>
         [HttpPost]
-        public List<AsignacionResponseDto> Post([FromBody] List<Int32> tareaIds)
+        public List<AsignacionResponseDto> AsignarVariasTareas([FromBody] List<Int32> tareaIds)
         {
             return _asignacionesServices.CrearTareas(tareaIds);
         }
