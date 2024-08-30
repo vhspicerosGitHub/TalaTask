@@ -26,11 +26,11 @@ Se utilizaron las siguientes librerias y conceptos
 
 * **.Net8**: 
 * Inyeccion de dependencias
-* modelo separados por capas
-* middleware para manejo de errores
-* Patron repository (una implementacion en momoria, noencontre que fuera necesario montar una db)
+* Modelo separados por capas
+* Middleware para manejo de errores
+* Patron repository (una implementacion en memoria)
 * Swaggger - Para la documentacion de la API.
-* Unit testing - pocos, pero hay algunos.
+* Unit testing - pocos, pero hay algunos. Y se jecutan con github actions 😎
 * Docker
 
  ## Logica / casos de uso / approach del problema
