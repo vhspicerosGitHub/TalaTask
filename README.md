@@ -45,7 +45,8 @@ Se utilizaron las siguientes librerias y conceptos
 
 ## Puntos de mejora en general
 * En general la logica podria priorizarm primero asignar las tareas con mas habilidades requeridas, o tareas con mas duracion.
-* incluir muchos mas unit tests
+* No considera hacer split de las tareas.
+* incluir muchos mas unit tests.
 * Se incluyeron varios mantenedores, pero creo que faltan algunos.
 * incluir seguridad.
 * Base de datos, use en memoria ya que no considere que  fuera necesario.
