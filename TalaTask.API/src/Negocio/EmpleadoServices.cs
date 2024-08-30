@@ -25,6 +25,9 @@ namespace TalaTask.API.src.Negocio
             if (_empleadoRepository.GetByName(empleado.Id) != null)
                 throw new AppException("Ya existe un empleado con ese nombre");
 
+            if (empleado.Disponibilidades.Any(x => x.Inicio > x.Fin))
+                throw new AppException("disponiblidad mal ingresada");
+
             _empleadoRepository.Crear(empleado);
         }
 

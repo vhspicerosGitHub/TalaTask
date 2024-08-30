@@ -19,6 +19,8 @@ namespace TalaTask.API.src.Negocio
 
         public void Crear(Tarea tarea)
         {
+            if (tarea.DuracionEstimada < 1)
+                throw new AppException("La duracion debe ser mayor a 0.");
             if (_repository.GetById(tarea.Id) != null)
                 throw new AppException("Ya existe una tarea con ese id.");
             if (_repository.GetByTitulo(tarea.Titulo) != null)
