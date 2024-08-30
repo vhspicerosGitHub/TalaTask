@@ -2,16 +2,15 @@ using TalaTask.API.src.Infraestrutura.Repositorios.Impl.Memory;
 using TalaTask.API.src.Infraestrutura.Repositorios.Interfaces;
 using TalaTask.API.src.Modelo;
 using TalaTask.API.src.Negocio;
-using TalaTask.API.src.Utils;
 
 namespace TalaTask.Tests
 {
-    public class LogicaBusquedaDeEmpleadoEnAsignacionTEST
+    public class AsignacionesttTest
     {
         private IAsignacionRepository _asignacionRepository;
         private ITareaRepository _tareaRepository;
         private IEmpleadoRepository _empleadoRepository;
-        private AsignacionesServices asignacionesServices;
+        private  AsignacionesServices asignacionesServices;
 
         [SetUp]
         public void Setup()
@@ -79,5 +78,7 @@ namespace TalaTask.Tests
             Assert.NotNull(empleadoMejorAsignacion);
             Assert.AreEqual(1, empleadoMejorAsignacion.Id);
         }
+
+     
     }
 }
